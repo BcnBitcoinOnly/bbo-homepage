@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcelona Bitcoin Only</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="blueprint-bg"></div>
+    
+    <div class="container">
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Barcelona Bitcoin Only Logo" class="logo">
+                <h1>BARCELONA<br>BITCOIN ONLY</h1>
+            </div>
+            <div class="header-meta">
+                <span class="doc-label">NO SHITCOINS INSIDE</span>
+                <span class="doc-number">P2P</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="intro-section">
+                <div class="section-label">INTRO</div>
+                <div class="content-box">
+                    <p>Bienvenidos a Barcelona Bitcoin Only. Somos una comunidad de entusiastas de Bitcoin, que se reúnen regularmente en Barcelona para charlar sobre Bitcoin, Lightning Network y el futuro del dinero descentralizado.</p>
+                </div>
+            </section>
+
+            <section class="connections-section">
+                <div class="section-label">CONNECTIONS</div>
+                
+                <div class="connection-grid">
+                    <div class="connection-card card-1">
+                        <div class="card-header">
+                            <span class="card-id">[01]</span>
+                            <h2>Únete a la conversación</h2>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-subtitle">Únete a nuestro grupo de Telegram para charlar con la comunidad y seguir nuestras noticias.</p>
+                            <a id="telegram-link" href="#" target="_blank" rel="noopener noreferrer" class="action-btn">
+                                <span class="btn-icon">→</span>
+                                <span>Telegram</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="connection-card card-2">
+                        <div class="card-header">
+                            <span class="card-id">[02]</span>
+                            <h2>Nuestros eventos</h2>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-subtitle">Aquí podrás encontrar la info de nuestros próximos eventos.</p>
+                            <a id="meetup-com-link" href="#" target="_blank" rel="noopener noreferrer" class="action-btn">
+                                <span class="btn-icon">→</span>
+                                <span>Meetup.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services-section">
+                <div class="section-label">SERVICES</div>
+                
+                <div class="services-header">
+                    <h2 class="section-title">Servicios Públicos</h2>
+                    <p class="services-subtitle">Nodos y servicios Bitcoin en abierto para la comunidad</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">BITCOIN NODE</span>
+                        </div>
+                        <p class="info-subtitle">Conecta tu nodo al nuestro</p>
+                        <div class="service-data">
+                            <input type="text" id="node-address" readonly class="data-input">
+                            <button class="copy-btn" onclick="copyToClipboard('node-address')">COPY</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">ELECTRUM SERVER</span>
+                        </div>
+                        <p class="info-subtitle">Servidor Electrum público para wallets compatibles</p>
+                        <div class="service-data">
+                            <input type="text" id="electrum-address" readonly class="data-input">
+                            <button class="copy-btn" onclick="copyToClipboard('electrum-address')">COPY</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">MEMPOOL EXPLORER</span>
+                        </div>
+                        <p class="info-subtitle">Explorador de mempool y blockchain en tiempo real</p>
+                        <div class="service-data">
+                            <a id="mempool-link" href="#" target="_blank" rel="noopener noreferrer" class="action-btn full-width">
+                                <span class="btn-icon">→</span>
+                                <span>Abrir Mempool</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-section">
+                    <p class="status-text">¿Intentado conectar y no funciona? Revisa el estado de nuestros servicios aquí:</p>
+                    <a id="status-page-link" href="#" target="_blank" rel="noopener noreferrer" class="status-btn">
+                        <span>[STATUS]</span> Ver estado de los servicios
+                    </a>
+                </div>
+            </section>
+
+            <section class="donation-section">
+                <div class="section-label">DONATION</div>
+                
+                <div class="donation-container">
+                    <h2 class="section-title">Apoya nuestro meetup</h2>
+                    <p class="donation-subtitle">Tus donaciones nos permiten organizar eventos y mantener servicios en abierto para todos.</p>
+                    
+                    <div class="donation-display">
+                        <div class="address-display" id="lightning-address-text">
+                            <div class="address-label">LIGHTNING ADDRESS</div>
+                            <div class="address-value-wrapper">
+                                <div class="address-value" id="lightning-address-display"></div>
+                                <div class="copy-icon-container" id="copy-icon-container" onclick="copyLightningAddress(event)">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="qr-display">
+                            <div id="lightning-qr"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-line"></div>
+            <div class="footer-logo-container">
+                <img src="logo.png" alt="Barcelona Bitcoin Only Logo" class="footer-logo">
+            </div>
+            <div class="footer-text">
+                <span>BARCELONA BITCOIN ONLY</span>
+                <span id="current-year"></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

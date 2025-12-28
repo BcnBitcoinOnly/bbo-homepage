@@ -1,0 +1,645 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bitcoin-orange: #f7931a;
+    --orange-dark: #e6850e;
+    --blue-primary: #0066cc;
+    --blue-dark: #004499;
+    --bg-cream: #faf9f6;
+    --bg-white: #ffffff;
+    --text-black: #000000;
+    --text-gray: #333333;
+    --grid-blue: #0066cc;
+    --border-blue: #0066cc;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-cream);
+    color: var(--text-black);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.blueprint-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--grid-blue) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-blue) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--bitcoin-orange);
+    position: relative;
+}
+
+.main-header::before {
+    content: '********************************************************************************';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--blue-primary);
+    letter-spacing: 3px;
+    opacity: 0.4;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    max-width: 80px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-black);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+h1#meetup-name {
+    text-transform: none;
+}
+
+.header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.doc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--blue-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.doc-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--text-black);
+    font-weight: 600;
+}
+
+/* Sections */
+section {
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--blue-primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    position: absolute;
+    left: -40px;
+    top: 0;
+    opacity: 0.6;
+}
+
+/* Intro Section */
+.intro-section {
+    margin-bottom: 60px;
+}
+
+.content-box {
+    background: var(--bg-white);
+    border: 2px solid var(--border-blue);
+    padding: 30px;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--blue-primary);
+}
+
+.content-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid var(--blue-primary);
+    opacity: 0.3;
+}
+
+.intro-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-black);
+}
+
+/* Connections Section */
+.connection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.connection-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-blue);
+    padding: 25px;
+    position: relative;
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+    box-shadow: 6px 6px 0 rgba(0, 102, 204, 0.2);
+}
+
+.connection-card.card-2 {
+    transform: rotate(0.5deg);
+}
+
+.connection-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 8px 8px 0 rgba(0, 102, 204, 0.3);
+}
+
+.card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bitcoin-orange);
+}
+
+.card-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--blue-primary);
+    font-weight: 600;
+}
+
+.connection-card h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-black);
+    margin: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-subtitle {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--bitcoin-orange);
+    color: var(--bg-white);
+    text-decoration: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.action-btn:hover {
+    background: var(--orange-dark);
+    transform: translateX(4px);
+}
+
+.action-btn.full-width {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+}
+
+/* Services Section */
+.services-header {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-black);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.services-subtitle {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.status-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-blue);
+}
+
+.status-text {
+    font-size: 12px;
+    color: var(--text-gray);
+    opacity: 0.7;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.status-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--blue-primary);
+    text-decoration: none;
+    border: 1px solid var(--blue-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.status-btn:hover {
+    background: var(--blue-primary);
+    color: var(--bg-white);
+    transform: translateY(-1px);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-blue);
+    padding: 20px;
+    position: relative;
+    transform: rotate(0.3deg);
+    transition: transform 0.3s ease;
+}
+
+.service-card:nth-child(2) {
+    transform: rotate(-0.3deg);
+}
+
+.service-card:nth-child(3) {
+    transform: rotate(0.2deg);
+}
+
+.service-card:hover {
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 4px 4px 0 rgba(0, 102, 204, 0.2);
+}
+
+.service-header {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--bitcoin-orange);
+}
+
+.service-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    color: var(--blue-primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.service-data {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.data-input {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-blue);
+    color: var(--text-black);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.data-input:focus {
+    outline: 2px solid var(--bitcoin-orange);
+    outline-offset: 1px;
+}
+
+.copy-btn {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--blue-primary);
+    color: var(--bg-white);
+    border: 2px solid var(--blue-primary);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--blue-dark);
+    border-color: var(--blue-dark);
+}
+
+.copy-btn:active {
+    transform: scale(0.98);
+}
+
+/* Donation Section */
+.donation-container {
+    background: var(--bg-white);
+    border: 3px solid var(--bitcoin-orange);
+    padding: 40px;
+    position: relative;
+    box-shadow: 8px 8px 0 rgba(247, 147, 26, 0.2);
+}
+
+.donation-container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 1px solid var(--blue-primary);
+    opacity: 0.3;
+}
+
+.donation-subtitle {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.donation-display {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.address-display {
+    flex: 1;
+    min-width: 300px;
+    background: var(--bg-cream);
+    border: 2px solid var(--border-blue);
+    padding: 25px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.address-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.address-value-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.address-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-black);
+    word-break: break-all;
+    line-height: 1.4;
+    display: inline;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+.copy-icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.copy-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--blue-primary);
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.copy-icon-container:hover .copy-icon {
+    color: var(--bitcoin-orange);
+    transform: scale(1.1);
+}
+
+.copy-icon-container.copied .copy-icon {
+    color: var(--bitcoin-orange);
+    animation: copyPulse 0.3s ease;
+}
+
+@keyframes copyPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.qr-display {
+    background: var(--bg-white);
+    border: 2px solid var(--border-blue);
+    padding: 20px;
+    box-shadow: 4px 4px 0 rgba(0, 102, 204, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.qr-display canvas,
+.qr-display img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.main-footer {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 2px solid var(--bitcoin-orange);
+}
+
+.footer-line {
+    height: 1px;
+    background: repeating-linear-gradient(
+        to right,
+        var(--blue-primary) 0px,
+        var(--blue-primary) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    margin-bottom: 30px;
+}
+
+.footer-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    max-width: 120px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.footer-text {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .section-label {
+        display: none;
+    }
+    
+    .connection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .donation-display {
+        flex-direction: column;
+    }
+    
+    .address-display {
+        min-width: 100%;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .main-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .header-meta {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .logo {
+        max-width: 60px;
+    }
+    
+    .donation-container {
+        padding: 25px 20px;
+    }
+}
+
