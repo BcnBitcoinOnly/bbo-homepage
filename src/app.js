@@ -326,7 +326,7 @@ async function loadBitcoinAddress() {
         bitcoinQrDisplay.className = 'qr-display';
         bitcoinQrDisplay.innerHTML = `
             <div id="bitcoin-qr"></div>
-            <div class="qr-label">Escanea con tu wallet Bitcoin</div>
+            <div class="qr-label">Escanea con tu wallet Onchain</div>
         `;
         
         // Create a wrapper to group Bitcoin address and QR code together
