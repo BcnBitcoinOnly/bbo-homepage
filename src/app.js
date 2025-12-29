@@ -283,7 +283,28 @@ async function loadBitcoinAddress() {
         const addressValue = document.createElement('div');
         addressValue.className = 'address-value';
         addressValue.id = 'bitcoin-address-display';
-        addressValue.textContent = address;
+        
+        // Split address into first 6, middle, and last 6 characters
+        const first6 = address.substring(0, 6);
+        const middle = address.substring(6, address.length - 6);
+        const last6 = address.substring(address.length - 6);
+        
+        // Create spans for each part with different colors
+        const firstSpan = document.createElement('span');
+        firstSpan.className = 'bitcoin-address-start';
+        firstSpan.textContent = first6;
+        
+        const middleSpan = document.createElement('span');
+        middleSpan.className = 'bitcoin-address-middle';
+        middleSpan.textContent = middle;
+        
+        const lastSpan = document.createElement('span');
+        lastSpan.className = 'bitcoin-address-end';
+        lastSpan.textContent = last6;
+        
+        addressValue.appendChild(firstSpan);
+        addressValue.appendChild(middleSpan);
+        addressValue.appendChild(lastSpan);
         
         const copyIconContainer = document.createElement('div');
         copyIconContainer.className = 'copy-icon-container';
@@ -311,6 +332,7 @@ async function loadBitcoinAddress() {
         // Create a wrapper to group Bitcoin address and QR code together
         // This ensures they stay together when the flex container wraps
         const bitcoinGroup = document.createElement('div');
+        bitcoinGroup.className = 'bitcoin-donation-group';
         bitcoinGroup.style.display = 'flex';
         bitcoinGroup.style.gap = '40px';
         bitcoinGroup.style.alignItems = 'flex-start';

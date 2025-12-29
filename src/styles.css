@@ -496,11 +496,20 @@ section {
     color: var(--text-black);
     word-break: break-all;
     line-height: 1.4;
-    display: inline;
+    display: block;
     user-select: text;
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
+}
+
+.bitcoin-address-start,
+.bitcoin-address-end {
+    color: #000000;
+}
+
+.bitcoin-address-middle {
+    color: #666666;
 }
 
 .copy-icon-container {
@@ -628,6 +637,16 @@ section {
         flex-direction: column;
     }
     
+    .donation-display > div {
+        width: 100%;
+        flex-basis: 100%;
+    }
+    
+    .bitcoin-donation-group {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
     .address-display {
         min-width: 100%;
     }
@@ -678,6 +697,17 @@ section {
     .address-value {
         word-break: break-word;
         overflow-wrap: break-word;
+        display: block !important;
+    }
+    
+    .donation-display > div {
+        width: 100% !important;
+        flex-basis: 100% !important;
+    }
+    
+    .bitcoin-donation-group {
+        flex-direction: column !important;
+        gap: 20px !important;
     }
 }
 
