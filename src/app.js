@@ -216,6 +216,33 @@ function init() {
         statusPageLink.closest('.status-section').style.display = 'none';
     }
     
+    // Set Signet service addresses
+    if (CONFIG.signetNodeUrl) {
+        document.getElementById('signet-node-address').value = CONFIG.signetNodeUrl;
+    } else {
+        document.getElementById('signet-node-address').closest('.service-card').style.display = 'none';
+    }
+    
+    if (CONFIG.signetElectrumUrl) {
+        document.getElementById('signet-electrum-address').value = CONFIG.signetElectrumUrl;
+    } else {
+        document.getElementById('signet-electrum-address').closest('.service-card').style.display = 'none';
+    }
+    
+    if (CONFIG.signetMempoolUrl) {
+        const signetMempoolLink = document.getElementById('signet-mempool-link');
+        signetMempoolLink.href = CONFIG.signetMempoolUrl;
+    } else {
+        document.getElementById('signet-mempool-link').closest('.service-card').style.display = 'none';
+    }
+    
+    if (CONFIG.signetFaucetUrl) {
+        const signetFaucetLink = document.getElementById('signet-faucet-link');
+        signetFaucetLink.href = CONFIG.signetFaucetUrl;
+    } else {
+        document.getElementById('signet-faucet-link').closest('.service-card').style.display = 'none';
+    }
+    
     // Set Lightning address from config
     // Set Lightning address from config
     const lightningDisplay = document.getElementById('lightning-address-display');

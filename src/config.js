@@ -14,6 +14,12 @@ const CONFIG = {
     statusPageUrl: "https://status.bitcoinbarcelona.xyz/status/bbo",
     
     // Lightning Address
-    lightningAddress: "dona@lnbits.bitcoinbarcelona.xyz"
+    lightningAddress: "dona@lnbits.bitcoinbarcelona.xyz",
+    
+    // Signet Services (Testing Network)
+    signetNodeUrl: "89.147.108.149:38333",
+    signetElectrumUrl: "ssl://electrum.bitcoinbarcelona.xyz:60602",
+    signetMempoolUrl: "https://sigpool.bitcoinbarcelona.xyz/",
+    signetFaucetUrl: "https://faucet.bitcoinbarcelona.xyz/"
 };
 

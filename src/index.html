@@ -143,6 +143,73 @@
                     </div>
                 </div>
             </section>
+
+            <section class="signet-section">
+                <div class="section-label">SIGNET</div>
+                
+                <div class="services-header">
+                    <h2 class="section-title">Servicios Signet</h2>
+                    <p class="services-subtitle">Red de pruebas Bitcoin para desarrolladores, experimentación y formación</p>
+                </div>
+
+                <div class="signet-warning">
+                    <span class="warning-icon">⚠</span>
+                    <div class="warning-content">
+                        <strong>RED DE PRUEBAS</strong>
+                        <span>El Bitcoin de Signet NO tiene valor real. Esta red es de juguete y está dedicada exclusivamente para pruebas y desarrollo. Por favor, presta atención y no lo confundas con Bitcoin mainnet.</span>
+                    </div>
+                </div>
+
+                <div class="services-grid signet-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">SIGNET NODE</span>
+                        </div>
+                        <p class="info-subtitle">Conecta tu nodo Signet al nuestro</p>
+                        <div class="service-data">
+                            <input type="text" id="signet-node-address" readonly class="data-input">
+                            <button class="copy-btn" onclick="copyToClipboard('signet-node-address')">COPY</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">SIGNET ELECTRUM</span>
+                        </div>
+                        <p class="info-subtitle">Servidor Electrum para wallets en Signet</p>
+                        <div class="service-data">
+                            <input type="text" id="signet-electrum-address" readonly class="data-input">
+                            <button class="copy-btn" onclick="copyToClipboard('signet-electrum-address')">COPY</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">SIGNET MEMPOOL</span>
+                        </div>
+                        <p class="info-subtitle">Explorador de mempool y blockchain Signet</p>
+                        <div class="service-data">
+                            <a id="signet-mempool-link" href="#" target="_blank" rel="noopener noreferrer" class="action-btn full-width">
+                                <span class="btn-icon">→</span>
+                                <span>Abrir Mempool</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-header">
+                            <span class="service-id">SIGNET FAUCET</span>
+                        </div>
+                        <p class="info-subtitle">Obtén sats de prueba gratis para experimentar</p>
+                        <div class="service-data">
+                            <a id="signet-faucet-link" href="#" target="_blank" rel="noopener noreferrer" class="action-btn full-width">
+                                <span class="btn-icon">→</span>
+                                <span>Obtener sats</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="main-footer">
