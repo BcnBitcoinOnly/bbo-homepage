@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dona a Barcelona Bitcoin Only</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Donations page specific styles */
+        .donations-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .donations-page .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .donations-page main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .donations-page .donation-section {
+            margin-bottom: 40px;
+        }
+        
+        .donations-page .main-header {
+            margin-bottom: 40px;
+        }
+        
+        .home-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--blue-primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .home-link:hover {
+            opacity: 1;
+        }
+        
+        .home-link svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .donations-page .main-footer {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+        
+        .footer-home-link {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="donations-page">
+    <div class="blueprint-bg"></div>
+    
+    <div class="container">
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Barcelona Bitcoin Only Logo" class="logo">
+                <h1>BARCELONA<br>BITCOIN ONLY</h1>
+            </div>
+            <div class="header-meta">
+                <span class="doc-label">DONATIONS</span>
+                <span class="doc-number">₿</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="donation-section">
+                <div class="section-label">DONATION</div>
+                
+                <div class="donation-container">
+                    <h2 class="section-title">Apoya nuestro meetup</h2>
+                    <p class="donation-subtitle">Tus donaciones nos permiten organizar eventos y mantener servicios en abierto para todos.</p>
+                    
+                    <div class="donation-display">
+                        <div class="address-display" id="lightning-address-text">
+                            <div class="address-label">LIGHTNING ADDRESS</div>
+                            <div class="address-value-wrapper">
+                                <div class="address-value" id="lightning-address-display"></div>
+                                <div class="copy-icon-container" id="copy-icon-container" onclick="copyLightningAddress(event)">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="qr-display">
+                            <div id="lightning-qr"></div>
+                            <div class="qr-label">Escanea con tu wallet Lightning</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-line"></div>
+            <div class="footer-home-link">
+                <a href="index.html" class="home-link">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
+                    </svg>
+                    <span>VOLVER A INICIO</span>
+                </a>
+            </div>
+            <div class="footer-logo-container">
+                <img src="logo.png" alt="Barcelona Bitcoin Only Logo" class="footer-logo">
+            </div>
+            <div class="footer-text">
+                <span>BARCELONA BITCOIN ONLY</span>
+                <span id="current-year"></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="donations-app.js"></script>
+</body>
+</html>
+

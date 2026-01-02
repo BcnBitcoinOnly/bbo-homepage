@@ -11,8 +11,10 @@ build:
 	@test -d $(SRC_DIR) || (echo "Error: $(SRC_DIR) folder not found." && exit 1)
 	@mkdir -p $(DIST_DIR)
 	@cp $(SRC_DIR)/index.html $(DIST_DIR)/
+	@cp $(SRC_DIR)/donations.html $(DIST_DIR)/
 	@cp $(SRC_DIR)/config.js $(DIST_DIR)/
 	@cp $(SRC_DIR)/app.js $(DIST_DIR)/
+	@cp $(SRC_DIR)/donations-app.js $(DIST_DIR)/
 	@cp $(SRC_DIR)/styles.css $(DIST_DIR)/
 	@if [ -f $(SRC_DIR)/logo.png ]; then cp $(SRC_DIR)/logo.png $(DIST_DIR)/; fi
 	@if [ -f $(SRC_DIR)/logo.jpg ]; then cp $(SRC_DIR)/logo.jpg $(DIST_DIR)/; fi

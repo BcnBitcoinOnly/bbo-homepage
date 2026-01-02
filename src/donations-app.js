@@ -1,4 +1,4 @@
-// Application logic - Populates the page with data from config.js
+// Application logic for donations page
 
 // Copy Lightning address to clipboard
 function copyLightningAddress(event) {
@@ -108,36 +108,6 @@ function copyBitcoinAddress(event) {
     });
 }
 
-// Copy to clipboard function (for service addresses)
-function copyToClipboard(inputId) {
-    const input = document.getElementById(inputId);
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile devices
-    
-    navigator.clipboard.writeText(input.value).then(() => {
-        const btn = input.nextElementSibling;
-        const originalText = btn.textContent;
-        btn.textContent = 'COPIED!';
-        btn.style.background = 'var(--bitcoin-orange)';
-        
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-        }, 2000);
-    }).catch(err => {
-        // Fallback for older browsers
-        document.execCommand('copy');
-        const btn = input.nextElementSibling;
-        const originalText = btn.textContent;
-        btn.textContent = 'COPIED!';
-        btn.style.background = 'var(--bitcoin-orange)';
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-        }, 2000);
-    });
-}
-
 // Generate QR code
 function generateQRCode(containerId, text) {
     if (typeof QRCode === 'undefined') {
@@ -164,85 +134,13 @@ function generateQRCode(containerId, text) {
             colorLight: '#FFFFFF',
             correctLevel: QRCode.CorrectLevel.H
         });
-        console.log('QR Code generated successfully');
     } catch (error) {
         console.error('QR Code generation error:', error);
     }
 }
 
-// Initialize the page
+// Initialize the donations page
 function init() {
-    // Set Telegram link
-    const telegramLink = document.getElementById('telegram-link');
-    if (CONFIG.telegramLink) {
-        telegramLink.href = CONFIG.telegramLink;
-    } else {
-        telegramLink.closest('.connection-card').style.display = 'none';
-    }
-    
-    // Set Meetup.com link
-    const meetupComLink = document.getElementById('meetup-com-link');
-    if (CONFIG.meetupComLink) {
-        meetupComLink.href = CONFIG.meetupComLink;
-    } else {
-        meetupComLink.closest('.connection-card').style.display = 'none';
-    }
-    
-    // Set service addresses
-    if (CONFIG.nodeUrl) {
-        document.getElementById('node-address').value = CONFIG.nodeUrl;
-    } else {
-        document.getElementById('node-address').closest('.service-card').style.display = 'none';
-    }
-    
-    if (CONFIG.electrumUrl) {
-        document.getElementById('electrum-address').value = CONFIG.electrumUrl;
-    } else {
-        document.getElementById('electrum-address').closest('.service-card').style.display = 'none';
-    }
-    
-    if (CONFIG.mempoolUrl) {
-        const mempoolLink = document.getElementById('mempool-link');
-        mempoolLink.href = CONFIG.mempoolUrl;
-    } else {
-        document.getElementById('mempool-link').closest('.service-card').style.display = 'none';
-    }
-    
-    // Set status page link
-    const statusPageLink = document.getElementById('status-page-link');
-    if (CONFIG.statusPageUrl) {
-        statusPageLink.href = CONFIG.statusPageUrl;
-    } else {
-        statusPageLink.closest('.status-section').style.display = 'none';
-    }
-    
-    // Set Signet service addresses
-    if (CONFIG.signetNodeUrl) {
-        document.getElementById('signet-node-address').value = CONFIG.signetNodeUrl;
-    } else {
-        document.getElementById('signet-node-address').closest('.service-card').style.display = 'none';
-    }
-    
-    if (CONFIG.signetElectrumUrl) {
-        document.getElementById('signet-electrum-address').value = CONFIG.signetElectrumUrl;
-    } else {
-        document.getElementById('signet-electrum-address').closest('.service-card').style.display = 'none';
-    }
-    
-    if (CONFIG.signetMempoolUrl) {
-        const signetMempoolLink = document.getElementById('signet-mempool-link');
-        signetMempoolLink.href = CONFIG.signetMempoolUrl;
-    } else {
-        document.getElementById('signet-mempool-link').closest('.service-card').style.display = 'none';
-    }
-    
-    if (CONFIG.signetFaucetUrl) {
-        const signetFaucetLink = document.getElementById('signet-faucet-link');
-        signetFaucetLink.href = CONFIG.signetFaucetUrl;
-    } else {
-        document.getElementById('signet-faucet-link').closest('.service-card').style.display = 'none';
-    }
-    
     // Set Lightning address from config
     const lightningDisplay = document.getElementById('lightning-address-display');
     if (CONFIG.lightningAddress) {
@@ -276,19 +174,16 @@ async function loadBitcoinAddress() {
     try {
         const response = await fetch('address.txt');
         if (!response.ok) {
-            // File doesn't exist or can't be read, don't add Bitcoin section
             return;
         }
         
         const text = await response.text();
         const address = text.trim();
         
-        // Only add section if address has a value
         if (!address) {
             return;
         }
         
-        // Get the donation display container
         const donationDisplay = document.querySelector('.donation-display');
         if (!donationDisplay) {
             return;
@@ -315,7 +210,6 @@ async function loadBitcoinAddress() {
         const middle = address.substring(6, address.length - 6);
         const last6 = address.substring(address.length - 6);
         
-        // Create spans for each part with different colors
         const firstSpan = document.createElement('span');
         firstSpan.className = 'bitcoin-address-start';
         firstSpan.textContent = first6;
@@ -356,7 +250,6 @@ async function loadBitcoinAddress() {
         `;
         
         // Create a wrapper to group Bitcoin address and QR code together
-        // This ensures they stay together when the flex container wraps
         const bitcoinGroup = document.createElement('div');
         bitcoinGroup.className = 'bitcoin-donation-group';
         bitcoinGroup.style.display = 'flex';
@@ -369,7 +262,6 @@ async function loadBitcoinAddress() {
         bitcoinGroup.appendChild(bitcoinAddressDisplay);
         bitcoinGroup.appendChild(bitcoinQrDisplay);
         
-        // Insert Bitcoin group after Lightning sections
         donationDisplay.appendChild(bitcoinGroup);
         
         // Generate QR code for Bitcoin address
@@ -377,17 +269,14 @@ async function loadBitcoinAddress() {
             if (typeof QRCode !== 'undefined' && address) {
                 generateQRCode('bitcoin-qr', address);
             } else if (address) {
-                // Retry after a short delay if library isn't loaded yet
                 setTimeout(tryGenerateBitcoinQR, 100);
             }
         }
         
-        // Try immediately, and also on window load
         tryGenerateBitcoinQR();
         window.addEventListener('load', tryGenerateBitcoinQR);
         
     } catch (error) {
-        // File doesn't exist or error reading it, don't add Bitcoin section
         console.log('Bitcoin address file not found or error reading it:', error);
     }
 }
